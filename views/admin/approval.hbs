@@ -1,0 +1,164 @@
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Assistant');
+
+    body {
+        background: #eee;
+        font-family: Assistant, sans-serif;
+    }
+
+    .cell-1 {
+        border-collapse: separate;
+        border-spacing: 0 4em;
+        background: #fff;
+        border-bottom: 5px solid transparent;
+        /*background-color: gold;*/
+        background-clip: padding-box;
+    }
+
+    thead {
+        background: #dddcdc;
+    }
+
+    .toggle-btn {
+        width: 40px;
+        height: 21px;
+        background: grey;
+        border-radius: 50px;
+        padding: 3px;
+        cursor: pointer;
+        -webkit-transition: all 0.3s 0.1s ease-in-out;
+        -moz-transition: all 0.3s 0.1s ease-in-out;
+        -o-transition: all 0.3s 0.1s ease-in-out;
+        transition: all 0.3s 0.1s ease-in-out;
+    }
+
+    .toggle-btn>.inner-circle {
+        width: 15px;
+        height: 15px;
+        background: #fff;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s 0.1s ease-in-out;
+        -moz-transition: all 0.3s 0.1s ease-in-out;
+        -o-transition: all 0.3s 0.1s ease-in-out;
+        transition: all 0.3s 0.1s ease-in-out;
+    }
+
+    .toggle-btn.active {
+        background: blue !important;
+    }
+
+    .toggle-btn.active>.inner-circle {
+        margin-left: 19px;
+    }
+</style>
+<div class="container mt-5">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10">
+            <div class="rounded">
+                <div class="table-responsive table-borderless">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Approvals
+                                </th>
+                                <th>User</th>
+                                <th>Car</th>
+                                <th>Brandname</th>
+                                <th>Registration</th>
+                                <th>Pickup Date</th>
+                                <th>Dropoff Date</th>
+                                <th>Current Location</th>
+                                <th>Update Kms</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="table-body">
+                            {{#each order}}
+                            <tr class="cell-1">
+                                <td class="text-center">
+                                    <a
+                                        onclick="yourfunction('{{this.booking.userid}}','{{this.booking._id}}','{{this.booking.dropofflocation}}','{{this.booking.carid}}')">
+                                        <div class="toggle-btn">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td>{{this.booking.username}}</td>
+                                <td><img src="/images/productimages/{{this.booking.carid}}(1).jpg" alt="" width="50px"
+                                        height="40px"></td>
+                                <td> {{this.booking.brandname}}</td>
+                                <td>{{this.booking.registration}}</td>
+                                <td>{{this.booking.pickupdate}}</td>
+                                <td>{{this.booking.dropoffdate}}</td>
+                                <td>{{this.booking.dropofflocation}},{{this.booking.dropoffpoint}}</td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        Update kms
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Update KMS</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form action="/admin/updatekms/{{this.booking.carid}}" method="post">
+                                                <div class="modal-body">
+                                                    <input type="number" name="kms"  required> Add total Kms in this trip
+                                                </div>
+                                                <div class="modal-footer text-white">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button class="btn btn-primary" type="submit"
+                                                        >Update</button>
+                                                </div></form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> </script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.toggle-btn').click(function () {
+            $(this).toggleClass('active').siblings().removeClass('active');
+        });
+
+    });
+</script>
+<script>
+    function yourfunction(userId, bookingId, location, carid) {
+        $.ajax({
+            url: '/admin/hubreached',
+            method: 'get',
+            data: { userId, bookingId, location, carid },
+            success: (Response) => {
+                if (Response.updated) {
+                    window.location.reload()
+                }
+            }
+        })
+    }
+    </script>
+ 

@@ -1,0 +1,69 @@
+
+    <style>
+        .small-img-group{
+            display: flex;
+            justify-content: space-between;
+
+        }
+        .small-img-col{
+            flex-basis: 24%;
+            cursor: pointer;
+            background-color: aliceblue;
+        }
+      
+        .txt{
+            font-weight: 600;
+            line-height: 32px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+    <section class="container sproduct my-5 pt-5 pr-5 ">
+        <div class="row mt-5 pt-5">
+            <div class="col-lg-5 col-md-12 col-12 mr-5 mb-3">
+                <img src="/images/productimages/{{cars._id}}(1).jpg" class="img-fluid w-100 pb-1" id="MainImg" alt="">
+                <div class="small-img-group">
+                    <div class="small-img-col">
+                    <img src="/images/productimages/{{cars._id}}(1).jpg" width="100%" class="small-img" alt="">
+                    </div>
+                    <div class="small-img-col">
+                    <img src="/images/productimages/{{cars._id}}(2).jpg" width="100%" class="small-img" alt="">
+                    </div>
+                    <div class="small-img-col">
+                    <img src="/images/productimages/{{cars._id}}(3).jpg" width="100%" class="small-img" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 col-12 ml-3    details">
+                <h4 class="txt">Car Details</h5>
+                <h5 class="txt">Brand:{{cars.brandname}}</h5>
+                <h5  class="txt">model:{{cars.brandmodel}}</h5>
+                <h5  class="txt">Variant:{{cars.varient}}</h5>
+                <h5 class="txt">Transmission:<i class="fa fa-gears fa-spin" style="font-size:30px"></i> {{cars.transmission}}</h5>
+                <p  class="txt"> <i class="fa-solid fa-gas-pump"></i> Fuel:{{cars.fuel}}</p>
+                <p  class="txt"> Seats:{{cars.seats}}</p>
+                <p  class="txt"> Rent  : <span class="ml-2 "><i class="fa-solid fa-indian-rupee-sign"></i><b> {{cars.rent}}</b> / per day</span></p>
+                <a href="/booknow/{{cars._id}}"><span class="btn btn-warning ">Book Now</span></a>
+            </div>
+        </div>
+    </section>
+    <script>
+        var MainImg=document.getElementById('MainImg');
+        var smallimg=document.getElementsByClassName('small-img');
+        smallimg[0].onclick=function(){
+            MainImg.src=smallimg[0].src;
+        }
+        smallimg[1].onclick=function(){
+            MainImg.src=smallimg[1].src;
+        }
+        smallimg[2].onclick=function(){
+            MainImg.src=smallimg[2].src;
+        }
+    </script>
+<script
+      src="https://kit.fontawesome.com/d46ab11f99.js"
+      crossorigin="anonymous"
+    ></script>
+    

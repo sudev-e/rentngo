@@ -1,0 +1,53 @@
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <div class="container">
+  <div class="row">
+  <div class="col-lg-6 col-md-6 col-12 ">
+
+                                       <form action="/admin/addingcoupons" method="post">  
+                                         <table>
+                                             <tr>
+                                        <div class="carbox">
+                                        <td>    <span class="cartxt">Coupon Name:</span></td>
+                                    <td> <input type="text" name="couponname" placeholder="coupon name" required></td>
+                                    </div></tr>
+                                    
+                                     <tr>
+                                        <div class="carbox pt-2">
+                                        <td>    <span class="cartxt">Coupon Code  :</span></td>
+                                    <td> <input type="text" name="couponcode" placeholder="coupon code" required></td>
+                                    </div></tr>
+                                    
+                                         <tr>
+                                        <div class="carbox pt-2">
+                                        <td>    <span class="cartxt">Offer Amount in percentage:</span></td>
+                                    <td> <input type="text" name="offeramount" placeholder="offer amount" required></td>
+                                    </div></tr>
+                                    
+                                         <tr>
+                                        <div class="carbox pt-2">
+                                        <td>    <span class="cartxt">Expiry date:</span></td>
+                                    <td> <input type="text" name="expirydate" placeholder=" Expiry date" id="txtDate" required></td>
+                                    </div></tr>
+                                         <tr>
+                                        <div class="carbox pt-2">
+                                        <td>    <span class="cartxt">coupon Label:</span></td>
+                                    <td> <input type="text" name="couponlabel"  placeholder="coupon label" required></td>
+                                    </div> </tr>
+                                    
+                                     </table>
+                                  <div class="d-flex justify-content-center pt-3"><input type="submit"  ></form>
+                                     </div>   
+                                     </div>
+                                     </div>
+                                     
+                                </div></div>
+                                  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                                  <script>
+                                    flatpickr("#txtDate", {
+                                   
+    minDate: "today",
+    maxDate: new Date().fp_incr(14) // 14 days from now
+
+                                    });
+                                  </script>

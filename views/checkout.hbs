@@ -1,0 +1,398 @@
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<style>
+    .txt {
+        font-weight: 600;
+        line-height: 32px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #main-image {
+        height: 14rem;
+        width: 25rem;
+    }
+
+    .box1 {
+        border: 1px solid rgb(178, 175, 175);
+        background-color: white;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-radius: 5px;
+
+    }
+
+    .box1 span {
+        font-weight: 500;
+        padding-left: 2px;
+    }
+
+    .mainpart {
+        box-shadow: 4px 3px 3px 3px whitesmoke;
+        background-color: rgb(254, 253, 253);
+    }
+
+    .imagepart {
+        background-color: white;
+    }
+
+    .quote {
+        padding-top: 5px;
+    }
+
+
+     body{
+
+  background-color: white;
+}
+
+.wrapper{
+
+  height: 100vh;
+}
+
+.card{
+    
+    position: relative;
+    background-color: #7B1FA2;
+    padding: 10px;
+    width: 400px;
+    border:none;
+   
+
+}
+
+.content{
+
+  z-index: 10;
+}
+
+.logo{
+
+  margin-bottom: 50px;
+}
+
+
+.off{
+
+      line-height: 0px;
+}
+
+.off h1{
+
+  font-size: 80px;
+}
+
+.off span{
+
+  margin-right: 111px;
+}
+
+
+.plus{
+  font-size: 23px;
+}
+
+.code{
+
+  text-transform: uppercase;
+  padding: 10px;
+  background-color: #fff;
+  color: red;
+  font-size: 20px;
+}
+
+.cross-bg{
+
+  height: 100%;
+  width: 100%;
+  position: absolute;
+
+  background-color: #a46eae;
+
+  left: 0px;
+    top: 0px;
+    opacity: 0.4;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    z-index:1;
+}
+</style>
+
+<body>
+
+    <section class=" container sproduct my-5 pt-5 pr-5   ">
+        <div class="mainpart">
+            <form action="/payment" method="post" id="checkout-form">
+                <div class="row mt-3 pt-5 ">
+                    <div class="col-lg-5 col-md-12 col-12 mr-5 mb-4">
+                        <div class="imagepart mb-4">
+                            <div class="mb-3  ml-4 pt-2 mb-4"> <img src="/images/productimages/{{cars._id}}(1).jpg"
+                                    class="img-fluid" id="main-image">
+                                {{!-- <img src="/images/productimages/{{cars._id}}(1).jpg" class="img-fluid w-100 pb-1"
+                                    id="MainImg" alt=""> --}}
+                            </div>
+                            <div class="pl-5 pt-0 pb-2 ">
+                            
+                                <h6>Brand :{{cars.brandname}} </h6>
+                                <h6>Model :{{cars.brandmodel}} </h6>
+                                <p class="quote">
+                                    RENT N GO Car company provide full time customer support and road side assistance
+                                    for free.We always give preference to our customers.
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12 col-12 ml-0    details">
+                        <div class="box1"> <span>Pickup Location : {{home.location1}}</span></div>
+                        <div class="box1"> <span>Pickup point :{{home.locationsub1}} </span></div>
+
+                        <div class="box1"><span>Drop off Location : {{home.location2}}</span></div>
+                        <div class="box1"> <span>Drop off point :{{home.locationsub2}} </span></div>
+                        <div class="box1"><span>Pickup Date :{{home.date1}}</span></div>
+                        <div class="box1"><span>Drop off Date :{{home.date2}}</span></div>
+                        <div class="box1"><span>ID Card:</span><input type="file" name="idcard" class="mt-2"
+                                name="image4" required></div>
+                        <div class="box1"><span>Driving License:</span><input type="file" name="idcard" class="mt-2"
+                                name="image5" required></div>
+                        <div class="box1"><span id="rent" >Total Rent :{{totalrent}}</span></div>
+                        {{!-- <h4 class="txt">Car Details</h5>
+                            <h4 class="txt">Brand:{{cars.brandname}}</h4>
+                            <h4 class="txt">model:{{cars.brandmodel}}</h4>
+                            <h4 class="txt">Varient:{{cars.varient}}</h4>
+                            <h5 class="txt">Transmission:<i class="fa fa-gears fa-spin" style="font-size:30px"></i>
+                                {{cars.transmission}}</h5>
+                            <p class="txt"> <i class="fa-solid fa-gas-pump"></i> Fuel:{{cars.fuel}}</p>
+                            <p class="txt"> Rent : <span class="ml-2 "><i class="fa-solid fa-indian-rupee-sign"></i><b>
+                                        1000</b> / per day</span></p>
+                            --}}
+                            <div class="box1 ">
+                                <div class="row">
+                                    <div class="col-md-6"><span>Coupons:</span></div>
+                                    <div class="col-md-6 pt-2"><button class="btn btn-sm btn-success "
+                                            data-toggle="modal" data-target="#exampleModal">check</button>
+
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Coupons</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    {{#each couponitem}}
+                                                    <div class="modal-body">
+                                                        {{!-- coupons content --}}
+                                                        <div
+                                                            class="wrapper d-flex justify-content-center align-items-center">
+
+                                                            <div class="card">
+
+
+                                                                <div class="cross-bg">
+
+                                                                </div>
+
+                                                                <div class="content">
+
+                                                                    <div class="logo text-right">
+                                                                        
+                                                                    </div>
+
+                                                                    <div
+                                                                        class="text-center text-uppercase text-white off">
+
+
+                                                                        <span>Flat</span>
+                                                                        <h1 class="mt-0">{{this.coupons.offeramount}} %</h1>
+
+                                                                    </div>
+
+                                                                    <div class="text-center text-white">
+
+                                                                        <span class="plus"></span>
+
+                                                                    </div>
+
+
+                                                                    <div class="text-center text-uppercase text-white">
+
+
+
+                                                                        <h3 class="m-0">{{this.coupons.couponname}}</h3>
+
+                                                                    </div>
+
+
+                                                                    <div class="px-5 mb-3">
+
+                                                                        <div class="code text-center mt-4">
+
+                                                                            <span>Use code : {{this.coupons.couponcode}}</span>
+
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+
+                                                            </div>
+                                                    
+                                                            {{#if ../coup}}
+                                                           
+                                                            <div class="pl-2"><a class="btn btn-warning " onclick="applyCoupon('{{this.coupons.couponcode}}','{{this.coupons.offeramount}}')">apply</a></div>
+                                                             {{else}}
+                                                             
+                                                             <div class="pl-2"><a class="btn btn-warning ">applied</a></div>
+                                                             {{/if}}
+                                                        </div>
+                                               
+                                                        {{!-- coupon content end --}}
+                                                    </div>
+                                                   {{/each}}
+
+                                                
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="sub d-flex justify-content-center"><input type="submit" class="btn btn-warning">
+                        </div>
+                    </div>
+            </form>
+        </div>
+        </div>
+
+    </section>
+
+</body>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="javascripts/jquery-3.3.1.min.js"></script>
+<script src="javascripts/popper.min.js"></script>
+<script src="javascripts/bootstrap.min.js"></script>
+<script src="javascripts/owl.carousel.min.js"></script>
+<script src="javascripts/jquery.sticky.js"></script>
+<script src="javascripts/jquery.waypoints.min.js"></script>
+<script src="javascripts/jquery.animateNumber.min.js"></script>
+<script src="javascripts/jquery.fancybox.min.js"></script>
+<script src="javascripts/jquery.easing.1.3.js"></script>
+<script src="javascripts/bootstrap-datepicker.min.js"></script>
+<script src="javascripts/aos.js"></script>
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+<script src="javascripts/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="https://your-site-or-cdn.com/fontawesome/v6.1.1/js/all.js" data-auto-replace-svg="nest"></script>
+
+
+<!-- Core plugin JavaScript-->
+<script src="/adminstyle/jquery-easing/jquery.easing.min.js"></script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    $("#checkout-form").submit((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/payment',
+            method: 'post',
+            data: $('#checkout-form').serialize(),
+            success: (response) => {
+                alert(response)
+                razorpayPayment(response)
+
+            }
+        })
+    })
+    function razorpayPayment(order) {
+        console.log(order)
+        var options = {
+            "key": "rzp_test_uonJJKohxrBA2c", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "User",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+
+
+                verifyPayment(response, order)
+            },
+            "prefill": {
+                "name": "Gaurav Kumar",
+                "email": "gaurav.kumar@example.com",
+                "contact": "9999999999"
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+    function verifyPayment(payment, order) {
+        $.ajax({
+            url: '/verify-payment',
+            data: {
+                payment,
+                order
+            },
+            method: 'post',
+            success: (response) => {
+                if (response.status) {
+                    location.href = '/'
+                } else {
+                    alert("payment failed")
+                }
+            }
+        })
+    }
+</script>
+<script>
+    function applyCoupon(couponcode,offeramount){
+        console.log(couponcode)
+        console.log(offeramount)
+        $.ajax({
+            url:'/applycoupon',
+            method:'post',
+            data:{couponcode,offeramount},
+            success:(Response)=>{
+                console.log(Response)
+                if(Response.applied){
+                document.getElementById("rent").innerHTML=Response.total
+                
+                }
+            }
+        })
+    }
+</script>
+
+<script src="https://kit.fontawesome.com/d46ab11f99.js" crossorigin="anonymous"></script>

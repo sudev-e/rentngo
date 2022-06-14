@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    
+    <div class="bg-img">
+        <div class="content"><header>LOG IN</header>
+            <form action="/login" method="post">
+            {{#if loginErr}}
+            <p class="error">invalid username or password</p>
+            {{/if}}
+            {{#if blockedUser}}
+        <p class="error">Blocked</p>
+        {{/if}}
+        <div class="field">
+            <span >
+</span>
+            <input type="text" placeholder="email" name="email"  class="pl-3">
+        </div>
+        <div class="field space">
+            <span ></span>
+            <input type="password" placeholder="password" name="password" class="pl-3">
+        </div>
+        <div class="pass"><span><a href="#">forget password..?</a></span></div>
+        <div class="field space btn btn-warning" >
+            <input type="submit"  value="submit" style="text-align: center";>
+        </div> 
+        <div class="pass"><span>Don't have an account ?<a href="/signup">Register </a></span></div>
+   </form>
+        </div>
+    </div>
+    
+</body>
+</html>
