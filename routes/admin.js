@@ -9,19 +9,19 @@ const { totalBooking } = require('../helpers/admin-helpers');
 /* GET users listing. */
 router.get('/', function(req, res, next) { 
   if(req.session.adminloggedin){
-    adminHelpers.anuualRevenue().then((incomes)=>{
-      console.log(incomes,"hi")
-      adminHelpers.totalBooking().then((totalBooking)=>{
+    // adminHelpers.anuualRevenue().then((incomes)=>{
+    //   console.log(incomes,"hi")
+    //   adminHelpers.totalBooking().then((totalBooking)=>{
         adminHelpers.totalCars().then((totalcar)=>{
-          adminHelpers.yearGraph().then((mincomes)=>{
-              res.render('admin/admin',{admin:true,totalBooking,incomes,totalcar,mincomes})
+          // adminHelpers.yearGraph().then((mincomes)=>{
+              res.render('admin/admin',{admin:true,totalcar})
           })
          
-        })
+        // })
      
-      })
+    //   })
     
-    })
+    // })
   }else{
           res.render('admin/adminlogin')
           req.session.adminblocked=false
