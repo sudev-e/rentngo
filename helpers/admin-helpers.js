@@ -272,7 +272,7 @@ module.exports={
             couponlabel:couponData.couponlabel
            }
            console.log(coupons)
-        await db.get().collection(collection.ADMIN_COLLECTION).updateOne({_id:ObjectId('62a443585626c666974b888c')},{$push:{'coupons':coupons}},{upsert:true}).then((response)=>{
+        await db.get().collection(collection.ADMIN_COLLECTION).updateOne({},{$push:{'coupons':coupons}},{upsert:true}).then((response)=>{
             console.log("lybu ssssss")
             console.log(response)
             resolve(response)
@@ -357,7 +357,13 @@ module.exports={
                 
             ]).toArray()
             console.log(totalBooking)
-            resolve(totalBooking[0].total)
+            if(totalBooking[0].total){
+                resolve(totalBooking[0].total)
+            }else{
+                const totalbooking = 0;
+                resolvel(totalBooking)
+            }
+            
         })
     },
     totalCars:()=>{
